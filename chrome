@@ -1,0 +1,2 @@
+--disable-web-security --allow-file-access-from-files #chrome调试phonegap
+open -a "Google Chrome Canary" --args --disable-web-security --allow-file-access-from-files #mac启动命令
