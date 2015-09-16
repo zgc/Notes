@@ -1,0 +1,2 @@
+mkdir -p /etc/docker/certs.d/dockerhub.fongwell.com/
+vim /etc/docker/certs.d/dockerhub.fongwell.com/ca.crt
