@@ -1,0 +1,9 @@
+在官网下载非windows版本需要在redis的根目录下手动编译，执行make
+在根目录下执行./src/redis-server启动默认配置的redis服务，./src/redis-cli启动默认配置的redis客户端
+./src/redis-servser redis.conf #表示启动时使用redis.conf这个配置文件
+redis.conf #port 6379表示使用的端口，开启分布式需要去除# cluster-enabled yes、# cluster-config-file nodes-6379.conf和# cluster-node-timeout 15000前面的#号
+使用redis-trib.rb命令自动配置分布式集群需要ruby的支持，gem install redis（https://rubygems.org/gems/redis）
+./src/redis-trib.rb create --replicas 0 127.0.0.1:9001 127.0.0.1:9002 127.0.0.1:9003 127.0.0.1:9004 127.0.0.1:9005 127.0.0.1:9006 #create表示创建分布式redis集群，0表示所有节点都是主节点（如果使用1，表示一半主节点，一半从节点，主从一对一），127.0.0.1:9001 127.0.0.1:9002 127.0.0.1:9003 127.0.0.1:9004 127.0.0.1:9005 127.0.0.1:9006表示需要添加到集群的redis服务
+Redis集群中内置了16384个哈希槽（0-16383），分布式就是把16384个哈希槽平分到每个节点（也可以手动分配）
+在3*3的集群中，表示有3个主节点，每个主节点有一个从节点，主从之间是数据同步的
+在某一个主节点宕机的时候，这个主节点的从节点就会代替这个宕机的主节点成为这个集群中的主节点，而这个宕机的主节点再次启动的时候就会成为代替成为主节点的从节点的从节点
