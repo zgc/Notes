@@ -1,0 +1,17 @@
+curl -sSL https://get.docker.com | sh #ubuntu安装docker，非root用户需要sudo，可能需要重试几次
+sudo usermod -aG docker your-user #添加当前用户到docker用户组，方便操作docker
+reboot #安装完可能需要重启ubuntu
+docker login xxxxxxxxx.com #登陆到私有容器仓库
+
+Error response from daemon: invalid registry endpoint https://xxxxxxxxx.com/v0/: unable to ping registry endpoint https://xxxxxxxxx.com/v0/
+v2 ping attempt failed with error: Get https://xxxxxxxxx.com/v2/: x509: certificate signed by unknown authority
+ v1 ping attempt failed with error: Get https://xxxxxxxxx.com/v1/_ping: x509: certificate signed by unknown authority. If this private registry supports only HTTP or HTTPS with an unknown CA certificate, please add `--insecure-registry xxxxxxxxx.com` to the daemon's arguments. In the case of HTTPS, if you have access to the registry's CA certificate, no need for the flag; simply place the CA certificate at /etc/docker/certs.d/xxxxxxxxx.com/ca.crt
+#使用自签名ssl证书认证出现的问题，把服务器上生成的xxxxxxxxx.com.crt复制到/etc/docker/certs.d/xxxxxxxxx.com/ca.crt
+
+service docker restart #重启docker
+docker pull xxxxxxxxx.com/redis #下载镜像，xxxxxxxxx.com是仓库地址，redis指的是容器名
+docker run -d --net=host xxxxxxxxx.com/redis redis-server #运行容器，-d表示隐式运行，--net=host表示使用host网络模式，xxxxxxxxx.com/redis表示需要运行的容器，redis-server表示容器执行的命令
+docker run -d -p 9000:6379 dockerhub.fongwell.com/redis redis-server #运行容器，-d表示隐式运行，-p表示端口映射，9000:6379表示把宿主的9000端口映射到容器的6379端口，xxxxxxxxx.com/redis表示需要运行的容器，redis-server表示容器执行的命令
+docker ps #查看当前运行的容器的状态和id
+docker stop b126534765a2 #停止运行container id为b126534765a2的容器，b126534765a2是容器的id，restart表示重启，rm删除，run运行
+docker exec -it b126534765a2 redis-cli #exec表示进入操作容器，参数-it不明（暂时木有查资料），b126534765a2是容器的id，redis-cli表示容器执行的命令
