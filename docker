@@ -6,7 +6,7 @@ docker login xxxxxxxxx.com #登陆到私有容器仓库
 Error response from daemon: invalid registry endpoint https://xxxxxxxxx.com/v0/: unable to ping registry endpoint https://xxxxxxxxx.com/v0/
 v2 ping attempt failed with error: Get https://xxxxxxxxx.com/v2/: x509: certificate signed by unknown authority
  v1 ping attempt failed with error: Get https://xxxxxxxxx.com/v1/_ping: x509: certificate signed by unknown authority. If this private registry supports only HTTP or HTTPS with an unknown CA certificate, please add `--insecure-registry xxxxxxxxx.com` to the daemon's arguments. In the case of HTTPS, if you have access to the registry's CA certificate, no need for the flag; simply place the CA certificate at /etc/docker/certs.d/xxxxxxxxx.com/ca.crt
-#使用自签名ssl证书认证出现的问题，把服务器上生成的xxxxxxxxx.com.crt复制到/etc/docker/certs.d/xxxxxxxxx.com/ca.crt
+#使用自签名ssl证书认证出现的问题，把服务器上生成的dockerCA.crt复制到/etc/docker/certs.d/xxxxxxxxx.com/ca.crt
 
 service docker restart #重启docker
 docker pull xxxxxxxxx.com/redis #下载镜像，xxxxxxxxx.com是仓库地址，redis指的是容器名
