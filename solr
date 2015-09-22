@@ -1,0 +1,2 @@
+cd ~/solr-5/bin #进入bin目录
+./solr start -p 8983 -s /Users/zgc/Tools/lanzhini-solr #start表示启动solr，-p 8983表示指定端口为8983，-s /Users/zgc/Tools/lanzhini-solr表示指定solr_HOME路径
