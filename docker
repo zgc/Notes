@@ -15,3 +15,4 @@ docker run -d -p 9000:6379 dockerhub.fongwell.com/redis redis-server #运行容�
 docker ps #查看当前运行的容器的状态和id
 docker stop b126534765a2 #停止运行container id为b126534765a2的容器，b126534765a2是容器的id，restart表示重启，rm删除，run运行
 docker exec -it b126534765a2 redis-cli #exec表示进入操作容器，参数-it不明（暂时木有查资料），b126534765a2是容器的id，redis-cli表示容器执行的命令
+docker exec -it solr /bin/bash #exec表示进入操作容器，参数-it不明（暂时木有查资料），solr是容器的name，/bin/bash表示容器执行的命令
