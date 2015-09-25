@@ -4,13 +4,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
- * Created by zgc on 15/9/22.
+ * Created by zgc on 15/9/23.
  */
 @Controller
 public class TestController {
+
+//    @Resource(name = "blCatalogService")
+//    private CatalogService catalogService;
+
     @RequestMapping("/test")
     public ModelAndView test() {
-        return new ModelAndView("test");
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("test");
+        modelAndView.addObject("txt", "hi");
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("a", "a");
+        map.put("b", "b");
+        modelAndView.addObject("map", map);
+//        Product product = catalogService.findProductByURI("/hot-sauces/hoppin_hot_sauce");
+//        product.setName("test name");
+//        catalogService.saveProduct(product);
+        return modelAndView;
     }
 }
