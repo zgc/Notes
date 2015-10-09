@@ -1,1 +1,6 @@
 lsof -i :8983 #查看8983端口的使用情况
+
+cd Tools/solr-5/bin/
+./solr -s /Users/zgc/Tools/lanzhini-solr
+cd ~/Tools/redis-unstable/src/
+./redis-server
