@@ -1,0 +1,24 @@
+ $(document).ready(
+        function () {
+
+            //$.ajax({
+            //    url: FW.getUrl('/customer/save'),
+            //    type: 'post',
+            //    contentType : 'application/json',
+            //    data : JSON.stringify({
+            //        "id": -1,
+            //        "name": "test1000",
+            //        "sex": "male",
+            //        "number": "test",
+            //        "balance": "1000",
+            //        "consumption": "10000",
+            //        "birthday": "2000-01-10",
+            //        "creditLimit": "1000000",
+            //        "mobile": "13900000000",
+            //        "qq": "11111",
+            //        "officePhone": "11111111111",
+            //        "homePhone": "11111111111"
+            //    })
+            //});
+
+        });
