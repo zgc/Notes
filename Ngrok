@@ -1,0 +1,7 @@
+ngrok -config ngrok.cfg -subdomain hxgsn 8080
+
+-config 指定配置文件
+
+-subdomain 指定二级域名
+
+8080 是指定映射到本地的哪一个端口
