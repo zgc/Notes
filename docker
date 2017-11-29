@@ -16,3 +16,5 @@ docker ps #查看当前运行的容器的状态和id
 docker stop b126534765a2 #停止运行container id为b126534765a2的容器，b126534765a2是容器的id，restart表示重启，rm删除，run运行
 docker exec -it b126534765a2 redis-cli #exec表示进入操作容器，参数-it:-t分配伪终端、-i打开输入，b126534765a2是容器的id，redis-cli表示容器执行的命令
 docker exec -it solr /bin/bash #exec表示进入操作容器，参数-it:-t分配伪终端、-i打开输入，solr是容器的name，/bin/bash表示容器执行的命令
+docker rmi $(docker images -q -f dangling=true) #删除所有none标签的镜像
+docker rm $(docker ps -a -q) #删除所有已经停止的容器
